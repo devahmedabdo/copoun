@@ -1,0 +1,62 @@
+<div>
+  <div class="container">
+    <div class="text-lg font-bold py-5 flex flex-wrap gap-5">
+      <div>
+        عدد الكوبونات <span class="text-primary">{{coupons?.length}}</span>
+      </div>
+      <div>
+        المستخدمة <span class="text-primary">{{usedCoupons?.length}}</span>
+      </div>
+      <div>
+        الغير مستخدمة <span class="text-primary">{{unusedCoupons?.length}}</span>
+      </div>
+    </div>
+
+    <div class="py-3">
+      <div class="formInput max-w-lg mx-auto">
+        <div>
+          <input type="text" #searchCoupon (change)="log(searchCoupon.value)" placeholder="ابحث باسم الكوبون">
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-4 overflow-auto max-h-96 table-box">
+      <table>
+        <tr>
+          <td>الكوبون</td>
+          <td>الحالة</td>
+        </tr>
+
+        <ng-container *ngFor="let coupon of coupons">
+          <tr *ngIf="coupon.description == searchCoupon.value  && searchCoupon.value != '' || searchCoupon.value == ''">
+            <td>{{coupon.description}}</td>
+            <td *ngIf="coupon.used">مستخدم</td>
+            <td *ngIf="!coupon.used">غير مستخدم</td>
+          </tr>
+        </ng-container>
+      </table>
+
+      <!-- <ng-container *ngFor="let user of users">
+        <div *ngIf="searchInput.value == user.email && searchInput.value != '' || searchInput.value == ''"
+          class="pt-10 flex flex-col items-center gap-2 bg-white bg-opacity-40 rounded-2xl hover:scale-105 duration-200 px-5 py-8">
+          <h2 class="font-bold text-primary">{{user.firstName+' '+ user.lastName}}</h2>
+          <span class="text-sm">{{user.email}}</span>
+          <span dir="ltr">{{user.phone}}</span>
+          <span>تاريخ الانضمام</span>
+          <span>{{user.createdAt | date}}</span>
+          <div class="text-primary font-bold">
+            {{user.coupon.description}}
+          </div>
+        </div>
+      </ng-container> -->
+    </div>
+    <!-- <div class="flex gap-4 flex-wrap justify-center">
+      <div
+        class="w-48 pt-10 flex flex-col items-center gap-2 bg-white bg-opacity-40 rounded-2xl hover:scale-105 duration-200 px-5 py-8"
+        *ngFor="let coupon of coupons">
+        <h2 class="font-bold text-primary">{{coupon.description}}</h2>
+        <span>تاريخ الانشاء</span>
+        <span>{{coupon.createdAt | date}}</span>
+      </div>
+    </div> -->
+  </div>
+</div>

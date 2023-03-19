@@ -1,0 +1,52 @@
+<div class="login  w-full flex justify-center items-center h-screen px-3">
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" class="bg-white bg-opacity-30 rounded-2xl p-12">
+    <h2 class="text-3xl md:text-4xl font-bold text-primary">تسجيل الدخول</h2>
+    <div class="pt-10">
+      <div class="formInput">
+        <label for="loginEmail">البريد الإلكترونى</label>
+        <div>
+          <input #email id="loginEmail" formControlName="email" type="email"
+            (change)="setRememberMe('email', email.value)" placeholder="أدخل البريد الالكترونى">
+          <fa-icon [icon]="emailIcon"></fa-icon>
+        </div>
+        <p>
+          <span *ngIf="loginForm.controls.email.errors?.['required'] && loginForm.controls.email.touched">* هذا الحقل
+            مطلوب</span>
+        </p>
+      </div>
+      <div class="formInput">
+        <label for="loginPassword">كلمة المرور</label>
+        <div> <input id="loginPassword" #password (change)="setRememberMe('password', password.value)"
+            formControlName="password" [type]="type" placeholder="أدخل كلمة المرور">
+          <fa-icon *ngIf="type =='password'" [icon]="eay" (click)="this.type = 'text'"></fa-icon>
+          <fa-icon *ngIf="type =='text'" [icon]="eayslash" (click)="this.type = 'password'"></fa-icon>
+        </div>
+        <p>
+          <span *ngIf="loginForm.controls.password.errors?.['required'] && loginForm.controls.password.touched">* هذا
+            الحقل مطلوب</span>
+        </p>
+      </div>
+      <div class="flex justify-between py-3 px-4 pt-0">
+        <label [ngClass]="{active:rememberMe}" class="checkBoxLable" for="rememberMe">
+          <div>
+            <div></div>
+          </div>
+          <span>تذكرنى</span>
+        </label>
+        <input [(ngModel)]="rememberMe" class="hidden" type="checkbox" id="rememberMe"
+          [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div class="text-center">
+        <button class="btn submitBtn" [ngClass]="{post:startPost,error:loginInvalid}" (click)="this.startPost = true"
+          type="submit">
+          <span></span>
+          <div>تسجيل الدخول</div>
+        </button>
+        <p><span>
+            خطأ فى البريد الالكترونى او كلمة المرور</span></p>
+      </div>
+
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div>
+  <div class="container">
+    <div class="text-lg font-bold py-5 flex justify-between">
+      <div>
+        عدد الأعضاء <span class="text-primary">{{users?.length}}</span>
+      </div>
+      <button class="btn" style="margin: 0;" (click)="download(userTable)">تنزيل الداتا</button>
+    </div>
+    <div class="py-3">
+      <div class="formInput max-w-lg mx-auto">
+        <div>
+          <input type="text" #searchInput (change)="log(searchInput.value)" placeholder="ابحث بالبريد الاكترونى">
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-4 overflow-auto max-h-96 table-box">
+      <table #userTable>
+        <tr>
+          <td>الاسم</td>
+          <td>البريد الالكترونى</td>
+          <td>رقم الجوال</td>
+          <td>الكوبون</td>
+        </tr>
+
+        <ng-container *ngFor="let user of users">
+          <tr *ngIf="searchInput.value == user.email && searchInput.value != '' || searchInput.value == ''">
+            <td>{{user.firstName+' '+ user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.coupon.description}}</td>
+          </tr>
+        </ng-container>
+      </table>
+
+      <!-- <ng-container *ngFor="let user of users">
+        <div *ngIf="searchInput.value == user.email && searchInput.value != '' || searchInput.value == ''"
+          class="pt-10 flex flex-col items-center gap-2 bg-white bg-opacity-40 rounded-2xl hover:scale-105 duration-200 px-5 py-8">
+          <h2 class="font-bold text-primary">{{user.firstName+' '+ user.lastName}}</h2>
+          <span class="text-sm">{{user.email}}</span>
+          <span dir="ltr">{{user.phone}}</span>
+          <span>تاريخ الانضمام</span>
+          <span>{{user.createdAt | date}}</span>
+          <div class="text-primary font-bold">
+            {{user.coupon.description}}
+          </div>
+        </div>
+      </ng-container> -->
+    </div>
+  </div>
+</div>

@@ -1,1 +1,128 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+@layer base {
+  ::selection {
+    @apply bg-primary text-white;
+  }
+  html {
+    scroll-behavior: smooth;
+    body {
+      @apply min-h-screen;
+      background: linear-gradient(45deg, #ffcfee, #fde9f6);
+      box-sizing: border-box;
+      font-family: "Noto Kufi Arabic", sans-serif;
+    }
+  }
+}
+@layer utilities {
+  .container {
+    @apply max-w-[1200px] mx-auto px-2;
+  }
+}
+@layer components {
+  .formInput {
+    // @apply pt-3;
+    > label {
+      @apply text-zinc-600;
+    }
+    > div {
+      @apply relative mt-3 flex;
+      input {
+        all: unset;
+        @apply bg-white bg-opacity-30 rounded-2xl px-6 py-3 w-full duration-300;
+        border: 1px solid transparent;
+        &:focus {
+          @apply border-primary;
+        }
+      }
+      fa-icon {
+        @apply absolute top-1/2 -translate-y-1/2 left-4 text-primary text-opacity-60;
+      }
+    }
+    p {
+      @apply h-5 text-xs mt-2 text-red-500;
+    }
+  }
+  .checkBoxLable {
+    @apply flex gap-2 items-center cursor-pointer select-none;
+    > div {
+      @apply w-4 border border-primary h-4 rounded-sm;
+      > div {
+        @apply h-full w-full scale-0 duration-150 rounded-sm bg-primary;
+      }
+    }
+    &.active {
+      > div {
+        > div {
+          --tw-scale-x: 0.8;
+          --tw-scale-y: 0.8;
+        }
+      }
+    }
+  }
+  .btn {
+    @apply mx-auto z-0 relative px-5 py-2 font-medium bg-primary text-white rounded-full hover:shadow-xl duration-300 overflow-hidden;
+    &::after {
+      @apply absolute -z-10 top-0 left-0 h-full w-0 duration-200 bg-white;
+      content: "";
+    }
+    &:hover,
+    &.active {
+      @apply text-primary bg-transparent;
+      &::after {
+        @apply w-full;
+      }
+    }
+  }
+  .table-box {
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply bg-primary rounded-full;
+    }
+    table {
+      @apply w-fit min-w-[50%];
+      tr {
+        td {
+          @apply p-2;
+        }
+      }
+    }
+  }
+  .submitBtn {
+    & + p {
+      @apply h-5 overflow-hidden text-center  text-red-500 text-xs mt-3;
+      span {
+        @apply translate-y-5 opacity-0;
+      }
+    }
+    span {
+      @apply absolute rounded-full opacity-0 duration-300 animate-spin border border-white border-t-transparent w-6 h-6;
+      animation-duration: 0.4s;
+      top: calc(50% - 12px);
+      left: calc(50% - 12px);
+    }
+    &:hover {
+      span {
+        @apply border-primary border-t-transparent;
+      }
+    }
+    &.post {
+      div {
+        opacity: 0;
+      }
+      span {
+        opacity: 1;
+      }
+    }
+    &.error {
+      & + p {
+        span {
+          @apply translate-y-0 opacity-100;
+        }
+      }
+    }
+  }
+}

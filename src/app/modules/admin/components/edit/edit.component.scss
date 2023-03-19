@@ -1,0 +1,8 @@
+form {
+  @apply flex flex-col w-full max-w-md gap-5;
+}
+.popup{
+  &.active{
+    @apply opacity-100 z-50
+  }
+}

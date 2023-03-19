@@ -1,0 +1,32 @@
+<div>
+  <div class="container flex flex-wrap justify-center gap-5">
+    <form class="max-w-md mt-10" [formGroup]="couponsForm" (ngSubmit)="addCoupons(couponsForm.value)" action="">
+      <textarea formControlName="coupons" class="h-96 bg-white bg-opacity-40 rounded-xl p-5 focus:outline-none"
+        placeholder="من فضلك قم بإدخال الكوبونات كل كوبون في سطر منفرد"></textarea>
+      <button class="btn" type="submit">إضافة</button>
+      <div *ngIf="coupons" [ngClass]="{active:popup}"
+        class="bg-white popup opacity-0 duration-200 -z-50 pt-16 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-5 w-full max-w-xl h-96 rounded-2xl">
+        <div class="relative">
+          <table>
+            <tr>
+              <td>لم يتم اضافة هذه الكوبونات لانها موجودة مسبقا</td>
+            </tr>
+
+            <ng-container *ngFor="let coupon of coupons">
+              <tr>
+                <td>{{coupon}}</td>
+
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+        <fa-icon class="absolute bg-primary w-10 h-10 rounded-lg top-3 text-white right-3 text-center leading-10"
+          [icon]="close" (click)=" this.popup = false">إغلاق</fa-icon>
+      </div>
+    </form>
+    <!-- <form class="max-w-md  " [formGroup]="couponsForm" (ngSubmit)="addCoupons(couponsForm.value)" action="">
+
+      <button class="btn" type="submit">إضافة</button>
+    </form> -->
+  </div>
+</div>

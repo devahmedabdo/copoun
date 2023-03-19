@@ -1,0 +1,38 @@
+<header class="py-5 relative">
+  <div class="container flex items-center justify-between">
+    <a id="home" href="" class="w-[100px]">
+      <img src="../../../../../assets/Cari Logo-1.png" alt="logo">
+    </a>
+    <nav>
+      <ul [ngClass]="{active:activeMenu}" class="flex font-medium text-lg gap-12 ">
+        <li style="--d:1" (click)="activeMenu=false">
+          <a routerLink="/dashboard/users">
+            المستخدمين
+          </a>
+        </li>
+        <li style="--d:2" (click)="activeMenu=false">
+          <a routerLink="/dashboard/coupons">
+            الكوبونات
+          </a>
+        </li>
+        <li style="--d:3" (click)="activeMenu=false">
+          <a routerLink="/dashboard/edit">
+            الإعدادات
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="logout">
+      <button class="btn" (click)="logout()">
+        تسجيل الخروج
+      </button>
+    </div>
+    <div class="menu-icon w-8 h-8 flex flex-col duration-300 gap-2 items-end" [ngClass]="{active:activeMenu}"
+      (click)="reflectActiveMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+</header>

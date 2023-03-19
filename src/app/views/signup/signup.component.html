@@ -1,0 +1,89 @@
+<div class="signup  min-h-screen flex justify-center items-center">
+  <div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm.value)"
+      class="max-w-2xl mx-auto bg-white bg-opacity-30 px-5 py-10 rounded-3xl">
+      <div class="flex flex-col">
+        <div class="px-4 my-5 capitalize font-bold flex justify-between items-center">
+          <h2 class="text-3xl text-primary">اربح مع كاري ويور باي</h2>
+          <div class="flex gap-2 items-center h-10">
+            <img class="w-5" src="../../../assets/upay Logo.png" alt="">
+            <span class="block w-[2px] bg-zinc-500 h-full"></span>
+            <img class="w-11" src="../../../assets/Cari Logo-1.png" alt="">
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div class="flex justify-evenly gap-4 flex-wrap">
+            <div class="formInput">
+              <label for="firstName">الاسم الاول</label>
+              <div>
+                <input id="firstName" formControlName="firstName" type="text" (focus)="removeError('firstName')">
+                <fa-icon [icon]="contactIcon"></fa-icon>
+              </div>
+              <p>
+                <span
+                  *ngIf="signupForm.controls.firstName.errors?.['required']&& signupForm.controls.firstName.touched">*
+                  هذا الحقل مطلوب</span>
+                <span *ngIf="signupErrors?.firstName">* هذا الحقل مطلوب</span>
+              </p>
+            </div>
+            <div class="formInput">
+              <label for="lastName">الاسم الثانى</label>
+              <div>
+                <input id="lastName" formControlName="lastName" type="text" (focus)="removeError('lastName')">
+                <fa-icon [icon]="contactIcon"></fa-icon>
+              </div>
+              <p>
+                <span
+                  *ngIf="signupForm.controls.lastName.errors?.['required']&&signupForm.controls.lastName.touched">*هذا
+                  الحقل مطلوب</span>
+                <span *ngIf="signupErrors?.lastName">*هذا الحقل مطلوب</span>
+              </p>
+            </div>
+          </div>
+          <div class="flex justify-evenly gap-4 flex-wrap">
+            <div class="formInput">
+              <label for="signupEmail">الايميل</label>
+              <div>
+                <input (focus)="removeError('email')" id="signupEmail" formControlName="email" type="email">
+                <fa-icon [icon]="emailIcon"></fa-icon>
+              </div>
+              <p>
+                <span *ngIf="signupForm.controls.email.errors?.['required'] && signupForm.controls.email.touched">* هذا
+                  الحقل مطلوب</span>
+                <span *ngIf="signupErrors?.keyPattern?.email">*هذا البريد مسجل بالفعل</span>
+                <span *ngIf="signupErrors?.errors?.email">*هذا البريد غير صالح</span>
+              </p>
+            </div>
+            <div class="formInput">
+              <label for="lastName">رقم الجوال</label>
+              <div>
+                <input style="max-width: 200px; padding-left: 65px;" dir="ltr" id="lastName" formControlName="phone"
+                  type="text" (focus)="removeError('phone')">
+                <span class="absolute text-zinc-600 top-3 left-3 border-r border-zinc-500 pr-2 select-none"
+                  dir="ltr">+966</span>
+              </div>
+              <p>
+                <span *ngIf="signupForm.controls.phone.errors?.['required'] && signupForm.controls.phone.touched">*هذا
+                  الحقل مطلوب</span>
+                <span *ngIf="signupErrors?.keyPattern?.phone">*هذا الهاتف مسجل بالفعل</span>
+                <span *ngIf="signupErrors?.errors?.phone">*من فضلك قم بادخال رقم سعودى</span>
+              </p>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn submitBtn " [ngClass]="{post:startPost}" (click)="this.startPost = true"
+              type="submit">
+              <span></span>
+              <div class="px-10">تسجيل</div>
+            </button>
+          </div>
+          <div class="h-14 flex items-center justify-center">
+            <p *ngIf="signupErrors?.coupon" class="text-center text-red-600">
+              ناسف لا يوجد أي كوبونات حاليا
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
