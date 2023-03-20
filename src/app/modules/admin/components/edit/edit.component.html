@@ -24,9 +24,6 @@
           [icon]="close" (click)=" this.popup = false">إغلاق</fa-icon>
       </div>
     </form>
-    <!-- <form class="max-w-md  " [formGroup]="couponsForm" (ngSubmit)="addCoupons(couponsForm.value)" action="">
-
-      <button class="btn" type="submit">إضافة</button>
-    </form> -->
+    <app-loading [hide]="!loading"></app-loading>
   </div>
 </div>

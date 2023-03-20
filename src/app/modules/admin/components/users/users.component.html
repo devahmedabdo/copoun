@@ -21,7 +21,6 @@
           <td>رقم الجوال</td>
           <td>الكوبون</td>
         </tr>
-
         <ng-container *ngFor="let user of users">
           <tr *ngIf="searchInput.value == user.email && searchInput.value != '' || searchInput.value == ''">
             <td>{{user.firstName+' '+ user.lastName}}</td>
@@ -31,20 +30,7 @@
           </tr>
         </ng-container>
       </table>
-
-      <!-- <ng-container *ngFor="let user of users">
-        <div *ngIf="searchInput.value == user.email && searchInput.value != '' || searchInput.value == ''"
-          class="pt-10 flex flex-col items-center gap-2 bg-white bg-opacity-40 rounded-2xl hover:scale-105 duration-200 px-5 py-8">
-          <h2 class="font-bold text-primary">{{user.firstName+' '+ user.lastName}}</h2>
-          <span class="text-sm">{{user.email}}</span>
-          <span dir="ltr">{{user.phone}}</span>
-          <span>تاريخ الانضمام</span>
-          <span>{{user.createdAt | date}}</span>
-          <div class="text-primary font-bold">
-            {{user.coupon.description}}
-          </div>
-        </div>
-      </ng-container> -->
     </div>
   </div>
 </div>
+<app-loading [hide]="loading"></app-loading>

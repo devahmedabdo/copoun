@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    // pathMatch: 'full',
     children: [
       {
         path: '',
@@ -21,7 +20,6 @@ const routes: Routes = [
       { path: 'edit', component: EditComponent },
     ],
   },
-  // { path: 'users', component: UsersComponent },
 ];
 
 @NgModule({

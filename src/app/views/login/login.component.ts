@@ -56,9 +56,6 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/dashboard');
       },
       error: (err) => {
-        // this.changeFormStatus(true);
-        // setTimeout(() => {
-        // }, 1111);
         this.loginInvalid = true;
         this.startPost = false;
         console.log(err);

@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { DashboardService } from 'src/app/services/dashboard.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -32,26 +33,14 @@ export class SignupComponent implements OnInit {
         this.router.navigateByUrl('/success');
       },
       error: (err) => {
-        // this.changeFormStatus(true);
         this.startPost = false;
         this.signupErrors = err.error;
-
-        console.log(err);
       },
     });
   }
   removeError(error: any) {
-    // console.log(this.signupEmailDublicated);
-    // console.log(this.formType);
-    // console.log(this.signupForm);
     if (error) {
-      // delete
       delete this.signupErrors?.[error];
-      // console.log(this.signupErrors);
-      // console.log(any);
-      // any = false;
-      // [].indexOf
-      // this.signupErrors.indexOf(any);
     }
   }
   ngOnInit(): void {}

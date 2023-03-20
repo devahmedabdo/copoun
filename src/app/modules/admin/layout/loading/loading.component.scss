@@ -1,0 +1,5 @@
+div {
+  &.hide {
+    @apply opacity-0 -z-50;
+  }
+}

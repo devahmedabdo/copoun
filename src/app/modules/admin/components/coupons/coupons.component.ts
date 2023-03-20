@@ -8,6 +8,7 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   styleUrls: ['./coupons.component.scss'],
 })
 export class CouponsComponent implements OnInit {
+  loading!: boolean;
   coupons!: Coupon[];
   usedCoupons!: Coupon[];
   unusedCoupons!: Coupon[];
@@ -23,8 +24,7 @@ export class CouponsComponent implements OnInit {
         this.unusedCoupons = coupons.coupons.filter((ele) => {
           return ele.used == false;
         });
-
-        console.log(coupons);
+        this.loading = true;
       },
       error: (err) => console.log(err),
     });

@@ -22,7 +22,7 @@ export class DashboardService {
     return this.http.post(apiUrl + 'coupon', data);
   }
   downloadData() {
-    return this.http.get(apiUrl + 'exportdata');
+    return this.http.get(apiUrl);
   }
 
   constructor(private http: HttpClient) {}

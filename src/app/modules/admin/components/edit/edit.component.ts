@@ -11,6 +11,7 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 })
 export class EditComponent implements OnInit {
   constructor(private fb: FormBuilder, private dash: DashboardService) {}
+  loading: boolean = false;
   couponsForm = this.fb.group({
     coupons: ['', Validators.required],
   });
@@ -18,16 +19,19 @@ export class EditComponent implements OnInit {
   close = faMinus;
   popup: boolean = false;
   addCoupons(data: any) {
+    this.loading = true;
     this.dash.addCoupons(data).subscribe({
       next: (data: any) => {
         if (data.dublicatedCoupon.length > 0) {
           this.coupons = data.dublicatedCoupon;
-          console.log(this.coupons);
           this.popup = true;
-          // this.couponsForm.controls.coupons.setValue('');
         }
+        this.loading = false;
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.loading = false;
+        console.log(err);
+      },
     });
   }
   ngOnInit(): void {}

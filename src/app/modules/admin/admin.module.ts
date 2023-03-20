@@ -9,6 +9,7 @@ import { CouponsComponent } from './components/coupons/coupons.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditComponent } from './components/edit/edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './layout/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     CouponsComponent,
     EditComponent,
+    LoadingComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, FontAwesomeModule , FormsModule ,ReactiveFormsModule],
 })

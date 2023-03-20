@@ -10,12 +10,13 @@ import * as XLSX from 'xlsx';
 })
 export class UsersComponent implements OnInit {
   users!: User[];
+  loading!: boolean;
   constructor(private dash: DashboardService) {}
   gitUsers() {
     this.dash.getAllUser().subscribe({
       next: (users) => {
         this.users = users.users;
-        console.log(users);
+        this.loading = true;
       },
       error: (err) => console.log(err),
     });
@@ -31,15 +32,6 @@ export class UsersComponent implements OnInit {
     /* save to file */
     XLSX.writeFile(wb, 'users.xlsx');
   }
-  // gitUser(email:string) {
-  //   this.dash.getUser().subscribe({
-  //     next: (user) => {
-  //       // this.user = user;
-  //       // console.log(users);
-  //     },
-  //     error: (err) => console.log(err),
-  //   });
-  // }
   log(a: any) {
     console.log(a);
   }
